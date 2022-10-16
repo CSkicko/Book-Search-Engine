@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
 
+// Import the gql useQuery function
+import { useQuery } from '@apollo/client';
+// Import the query to get a single profile
+import { QUERY_USER } from '../utils/queries';
+
 import { getMe, deleteBook } from '../utils/API';
 import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
