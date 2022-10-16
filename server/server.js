@@ -3,12 +3,16 @@ const path = require('path');
 const db = require('./config/connection');
 const routes = require('./routes');
 
+// Import the authorisation middleware
+const { authMiddleware } = require('./utils/auth');
+
 // Import dependencies and set up apollo server
 const { ApolloServer } = require('apollo-server-express');
 const { typeDefs, resolvers } = require('./schemas');
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context: authMiddleware,
 });
 
 const app = express();
